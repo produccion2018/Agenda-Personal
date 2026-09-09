@@ -10,6 +10,8 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { AuthProvider } from "../context/AuthContext";
+import { LifeSyncProvider } from "../context/LifeSyncContext";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -121,8 +123,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      {/* Proveedores globales de la maqueta: sesión simulada + datos de vida */}
+      <AuthProvider>
+        <LifeSyncProvider>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </LifeSyncProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
