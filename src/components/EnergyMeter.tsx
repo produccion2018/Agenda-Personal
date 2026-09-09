@@ -19,7 +19,7 @@ export function EnergyMeter() {
         </h3>
       </header>
 
-      <div className="flex items-center gap-6">
+      <div className="flex flex-col items-center gap-5 text-center 2xl:flex-row 2xl:text-left">
         <div className="relative h-32 w-32 shrink-0">
           <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
             <circle
